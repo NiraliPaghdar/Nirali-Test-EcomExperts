@@ -785,7 +785,18 @@ class VariantSelects extends HTMLElement {
       }).includes(false);
     });
   }
-
+ _filterthumbnails: function(variants){
+    if(variant.featured_image != null && variant.featured_image.alt != null){
+      console.log("test");
+      $('[data-thumb-color]').hide();
+      var selected_color = variant.featured_image.allt;
+      var thumbnail_selector = '[data-thumb-color="' + selected_color + '"]';
+      $(thumbnail_selector).show();
+    }
+    else{
+      $('[data-thumb-color]').show();
+    }
+  } 
   updateMedia() {
     if (!this.currentVariant) return;
     if (!this.currentVariant.featured_media) return;

@@ -328,3 +328,124 @@
   ]
 }
 {% endschema %}
+
+                  {% assign allProducts = "yes" %}
+
+<!-- only if a product is present in the cart - replace product-1 with the url portion of your product -->
+<!-- Product to be present in the cart - replace product-2 with the url portion of your product -->
+
+{% assign product_incart = all_products['handbag'] %}
+
+<!-- Product to be added automatically - replace product-2 with the url portion of your product -->
+
+{% assign product_added = all_products['dark-winter-jacket'] %}
+
+{% unless cart.item_count == 0 or product_added.empty? or product_added.variants.first.available == false %}
+
+<!-- By default the first variant of the product is taken into account - if you want to change this change "product_added.variants.first.id" by the identifier of the variant that you will find in the edition of your variants -->
+
+{% assign variant_id = product_added.variants.first.id %}
+
+{% if allProducts == "no" %}
+
+{% assign isProduct = false %}
+
+{% for item in cart.items %}
+{% if item.product.handle == product_incart.handle %}
+{% assign isProduct = true %}
+{% endif %}
+{% endfor %}
+
+{% if isProduct == true %}
+
+<script>
+
+(function($) {
+
+let cartItems = {{ cart.items | json }},
+qtyInTheCart = 0,
+cartUpdates = {};
+
+for (let i=0; i<cartItems.length; i++) {
+if ( cartItems[i].id === {{ variant_id }} ) {
+qtyInTheCart = cartItems[i].quantity;
+break;
+}
+}
+
+if ((cartItems.length === 1) && (qtyInTheCart > 0)) {
+cartUpdates = { {{ variant_id }}: 0 }
+
+}
+else if (( cartItems.length >= 1) && (qtyInTheCart !== 1 )) {
+cartUpdates = { {{ variant_id }}: 1 }
+}
+else {
+return;
+}
+
+const params = {
+type: 'POST',
+url: '/cart/update.js',
+data: { updates: cartUpdates },
+dataType: 'json',
+success: function(stuff) {
+window.location.href = '/cart';
+}
+};
+
+$.ajax(params);
+
+})(jQuery);
+
+</script>
+
+{% endif %}
+
+{% else %}
+
+<script>
+
+(function($) {
+
+let cartItems = {{ cart.items | json }},
+qtyInTheCart = 0,
+cartUpdates = {};
+
+for (let i=0; i<cartItems.length; i++) {
+if ( cartItems[i].id === {{ variant_id }} ) {
+qtyInTheCart = cartItems[i].quantity;
+break;
+}
+}
+
+if ((cartItems.length === 1) && (qtyInTheCart > 0)) {
+cartUpdates = { {{ variant_id }}: 0 }
+
+}
+else if (( cartItems.length >= 1) && (qtyInTheCart !== 1 )) {
+cartUpdates = { {{ variant_id }}: 1 }
+}
+else {
+return;
+}
+
+const params = {
+type: 'POST',
+url: '/cart/update.js',
+data: { updates: cartUpdates },
+dataType: 'json',
+success: function(stuff) {
+window.location.href = '/cart';
+}
+};
+
+$.ajax(params);
+
+})(jQuery);
+
+</script>
+
+{% endif %}
+
+{% endunless %}

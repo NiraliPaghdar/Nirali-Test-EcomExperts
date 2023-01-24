@@ -787,10 +787,10 @@ class VariantSelects extends HTMLElement {
     });
   }
  _filterthumbnails: function(variants){
-    if(variant.featured_image != null && variant.featured_image.alt != null){
+    if(variant.featured_media != null && variant.featured_media.alt != null){
       console.log("test");
       $('[data-thumb-color]').hide();
-      var selected_color = variant.featured_image.allt;
+      var selected_color = variant.featured_media.allt;
       var thumbnail_selector = '[data-thumb-color="' + selected_color + '"]';
       $(thumbnail_selector).show();
     }

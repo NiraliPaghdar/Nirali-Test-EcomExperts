@@ -474,7 +474,7 @@
               <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
             {%- when 'variant_picker' -%}
               {%- unless product.has_only_default_variant -%}
-                                  
+                {%- if block.settings.picker_type == 'button' -%}                  
                   <variant-radios
                     class="no-js-hidden"
                     data-section="{{ section.id }}"
@@ -508,7 +508,7 @@
                       {{ product.variants | json }}
                     </script>
                   </variant-radios>                    
-               
+                {%- else -%}
                   <variant-selects
                     class="no-js-hidden"
                     data-section="{{ section.id }}"
@@ -549,7 +549,7 @@
                       {{ product.variants | json }}
                     </script>
                   </variant-selects>
-                
+                {%- endif -%}
               {%- endunless -%}
 
               <noscript class="product-form__noscript-wrapper-{{ section.id }}">

@@ -474,8 +474,7 @@
               <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
             {%- when 'variant_picker' -%}
               {%- unless product.has_only_default_variant -%}
-                {%- if block.settings.picker_type == 'button' -%}
-                  {% if option.name == 'color' %}
+                {%- if block.settings.picker_type == 'button' -%}                  
                   <variant-radios
                     class="no-js-hidden"
                     data-section="{{ section.id }}"
@@ -483,6 +482,7 @@
                     {{ block.shopify_attributes }}
                   >
                     {%- for option in product.options_with_values -%}
+                      {% if option.name == 'color' %}
                       <fieldset class="js product-form__input">
                         <legend class="form__label">{{ option.name }}</legend>
                         {%- for value in option.values -%}
@@ -499,14 +499,15 @@
                           <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
                             {{ value }}
                           </label>
+                          
                         {%- endfor -%}
                       </fieldset>
+                        {% endif %}
                     {%- endfor -%}
                     <script type="application/json">
                       {{ product.variants | json }}
                     </script>
-                  </variant-radios>
-                    {% endif %}
+                  </variant-radios>                    
                 {%- else -%}
                   <variant-selects
                     class="no-js-hidden"

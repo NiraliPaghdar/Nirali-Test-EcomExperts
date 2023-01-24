@@ -506,7 +506,7 @@
                       {{ product.variants | json }}
                     </script>
                   </variant-radios>                    
-                {% if option.name == "Size" %}
+                
                   <variant-selects
                     class="no-js-hidden"
                     data-section="{{ section.id }}"
@@ -547,7 +547,6 @@
                       {{ product.variants | json }}
                     </script>
                   </variant-selects>
-                {%- endif -%}
               {%- endunless -%}
 
               <noscript class="product-form__noscript-wrapper-{{ section.id }}">

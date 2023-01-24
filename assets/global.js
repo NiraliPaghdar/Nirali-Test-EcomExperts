@@ -798,7 +798,8 @@ filterMedia() {
       
       $(selected_attribute).show();
 
-    } }
+    } 
+}
   updateMedia() {
     if (!this.currentVariant) return;
     if (!this.currentVariant.featured_media) return;

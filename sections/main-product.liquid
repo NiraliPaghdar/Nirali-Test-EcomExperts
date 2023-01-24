@@ -475,6 +475,7 @@
             {%- when 'variant_picker' -%}
               {%- unless product.has_only_default_variant -%}
                 {%- if block.settings.picker_type == 'button' -%}
+                  {% if option.name == 'color' %}
                   <variant-radios
                     class="no-js-hidden"
                     data-section="{{ section.id }}"
@@ -505,6 +506,7 @@
                       {{ product.variants | json }}
                     </script>
                   </variant-radios>
+                    {% endif %}
                 {%- else -%}
                   <variant-selects
                     class="no-js-hidden"

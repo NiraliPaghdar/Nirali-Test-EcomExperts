@@ -767,7 +767,6 @@ class VariantSelects extends HTMLElement {
       this.setUnavailable();
     } else {
       this.updateMedia();
-      this._filterthumbnails(variants);
       this.updateURL();
       this.updateVariantInput();
       this.renderProductInfo();
@@ -786,18 +785,7 @@ class VariantSelects extends HTMLElement {
       }).includes(false);
     });
   }
- _filterthumbnails: function(variants){
-    if(variant.featured_media != null && variant.featured_media.alt != null){
-      console.log("test");
-      $('[data-thumb-color]').hide();
-      var selected_color = variant.featured_media.alt;
-      var thumbnail_selector = '[data-thumb-color="' + selected_color + '"]';
-      $(thumbnail_selector).show();
-    }
-    else{
-      $('[data-thumb-color]').show();
-    }
-  } 
+
   updateMedia() {
     if (!this.currentVariant) return;
     if (!this.currentVariant.featured_media) return;

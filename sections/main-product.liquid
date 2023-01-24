@@ -539,7 +539,9 @@
                         </div>
                       </div>
                     {%- endfor -%}
-
+{% if product.available and product.variants.size > 1 %}
+  {% render 'swatch' with 'Color' as swatch %}
+{% endif %}
                     <script type="application/json">
                       {{ product.variants | json }}
                     </script>

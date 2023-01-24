@@ -790,7 +790,7 @@ class VariantSelects extends HTMLElement {
     if(variant.featured_media != null && variant.featured_media.alt != null){
       console.log("test");
       $('[data-thumb-color]').hide();
-      var selected_color = variant.featured_media.allt;
+      var selected_color = variant.featured_media.alt;
       var thumbnail_selector = '[data-thumb-color="' + selected_color + '"]';
       $(thumbnail_selector).show();
     }

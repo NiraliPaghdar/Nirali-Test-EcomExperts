@@ -72,6 +72,8 @@ class CartItems extends HTMLElement {
       })
       .then((state) => {
         const parsedState = JSON.parse(state);
+
+        /* // Start-ECOM --- auto added product remove on cart page code  --- // */
         if(parsedState.item_count > 0){
           var is_product = false;
           var is_variant = false;
@@ -97,7 +99,8 @@ class CartItems extends HTMLElement {
             jQuery.ajax(params);
           }
         }
-
+        /* // End-ECOM --- auto added product remove on cart page code --- // */
+        
         this.classList.toggle('is-empty', parsedState.item_count === 0);
         const cartDrawerWrapper = document.querySelector('cart-drawer');
         const cartFooter = document.getElementById('main-cart-footer');

@@ -366,20 +366,21 @@
 let cartItems = {{ cart.items | json }},
 qtyInTheCart = 0,
 cartUpdates = {};
+variant_id = 44328330690876;
 
 for (let i=0; i<cartItems.length; i++) {
-if ( cartItems[i].id === 44328330690876 ) {
+if ( cartItems[i].id === {{ variant_id }} ) {
 qtyInTheCart = cartItems[i].quantity;
 break;
 }
 }
 
 if ((cartItems.length === 1) && (qtyInTheCart > 0)) {
-cartUpdates = { 44328330690876: 0 }
+cartUpdates = { {{ variant_id }}: 0 }
 
 }
 else if (( cartItems.length >= 1) && (qtyInTheCart !== 1 )) {
-cartUpdates = { 44328330690876: 1 }
+cartUpdates = { {{ variant_id }}: 1 }
 }
 else {
 return;

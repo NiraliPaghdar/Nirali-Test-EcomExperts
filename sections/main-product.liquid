@@ -533,6 +533,12 @@
                                   selected="selected"
                                 {% endif %}
                               >
+                                Please Select...
+                              </option>
+                              <option
+                                value="{{ value | escape }}"
+                                
+                              >
                                 {{ value }}
                               </option>
                             {%- endfor -%}

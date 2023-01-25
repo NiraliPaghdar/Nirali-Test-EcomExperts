@@ -2970,5 +2970,8 @@ details-disclosure > details {
 .product__media-list li.product__media-item.grid__item.slider__slide .product__media img {
   position: relative;height: 600px;object-fit: contain;
 }
+.product__media-list li.product__media-item.grid__item.slider__slide:first-child {
+    display: block;
+}
 
 /* // End-ECOM --- product page main image css --- // */

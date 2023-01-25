@@ -603,7 +603,10 @@
                   </div>
 
                   {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-                    text
+                   <p class="line-item-property__field">
+  <label for="your-name">Your name</label>
+  <input id="your-name" type="text" name="properties[Your name]">
+</p>
                     <input
                       type="hidden"
                       name="id"

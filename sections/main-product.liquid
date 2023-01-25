@@ -645,7 +645,7 @@
                         {% endif %}
                       >
                         <span>
-                          {%- if available -%}
+                          {%- if product.selected_variant.available -%}
                             {{ 'products.product.add_to_cart' | t }}
                           {%- else -%}
                             {{ 'products.product.sold_out' | t }}

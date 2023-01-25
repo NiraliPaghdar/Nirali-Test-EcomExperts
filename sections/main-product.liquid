@@ -571,7 +571,7 @@
                     >
                       {%- for variant in product.variants -%}
                         <option
-                          {% if variant == product.selected_or_first_available_variant %}
+                          {% if variant == product.selected_variant %}
                             selected="selected"
                           {% endif %}
                           {% if variant.available == false %}

@@ -350,7 +350,7 @@
 {% assign isProduct = false %}
 
 {% for item in cart.items %}
-{% if item.url == 'products/handbag?variant=44328330690876' %}
+{% if item.url == '/products/handbag?variant=44328330690876' %}
   {{ item.product.handle }}
   {{ item.url }}
 {% assign isProduct = true %}

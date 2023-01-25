@@ -649,7 +649,8 @@
 
                 {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
-{% comment %} <!--                 {%- assign pick_up_availabilities = product.selected_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+      {% comment %} 
+            {%- assign pick_up_availabilities = product.selected_variant.store_availabilities | where: 'pick_up_enabled', true -%}
 
                 <pickup-availability
                   class="product__pickup-availabilities no-js-hidden quick-add-hidden"
@@ -671,10 +672,11 @@
                       </div>
                     </pickup-availability-preview>
                   </template>
-                </pickup-availability> --> {% endcomment %}
+                </pickup-availability>
+            {% endcomment %}
               </div>
 
-              <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+             {% comment %}  <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script> {% endcomment %}
             {%- when 'rating' -%}
               {%- if product.metafields.reviews.rating.value != blank -%}
                 {% liquid

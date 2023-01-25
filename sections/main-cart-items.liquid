@@ -330,7 +330,8 @@
 {% endschema %}
 
 {% assign allProducts = "no" %}
-
+{% if product.variant.id == '44328330690876' %}
+  {{ product.variant.id }}
 <!-- only if a product is present in the cart - replace product-1 with the url portion of your product -->
 <!-- Product to be present in the cart - replace product-2 with the url portion of your product -->
 
@@ -358,7 +359,6 @@
 {% endfor %}
 
 {% if isProduct == true %}
-{% if product.variant.id == '44328330690876' %}
 <script>
 
 (function($) {
@@ -446,7 +446,8 @@ $.ajax(params);
 })(jQuery);
 
 </script>
-{% endif %}
+
 {% endif %}
 
 {% endunless %}
+  {% endif %}

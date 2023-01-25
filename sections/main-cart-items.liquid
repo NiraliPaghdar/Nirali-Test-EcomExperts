@@ -333,8 +333,8 @@
 <!-- only if a product is present in the cart - replace product-1 with the url portion of your product -->
 <!-- Product to be present in the cart - replace product-2 with the url portion of your product -->
 
-{% assign variant_ids = '/handbag?variant=44328330690876' %}
-{% assign product_incart = all_products['handbag'] %}
+{% assign variant_ids = '/products/handbag?variant=44328330690876' %}
+{% assign product_incart = all_products[variant_ids] %}
 <!-- Product to be added automatically - replace product-2 with the url portion of your product -->
 
 {% assign product_added = all_products['dark-winter-jacket'] %}
@@ -350,8 +350,7 @@
 {% assign isProduct = false %}
 
 {% for item in cart.items %}
-{% if item.url == '/products/handbag?variant=44328330690876' %}
-  {{ item.product.handle }}
+{% if item.url == product_incart %}
   {{ item.url }}
 {% assign isProduct = true %}
 {% endif %}

@@ -957,7 +957,7 @@ $(document).ready(function() {
       .filter(function() { 
         return $(this).find('option').length > 1  
       })
-      .prepend('<option value="">Pick a ' + productOptions[i][i] + '</option>')
+      .prepend('<option value="">Pick a Size</option>')
       .val('')
       .trigger('change');
     }

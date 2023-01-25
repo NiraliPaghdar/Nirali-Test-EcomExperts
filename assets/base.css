@@ -2957,7 +2957,7 @@ details-disclosure > details {
     outline: transparent solid 1px;
   }
 }
-// start-ECOM --- product page main image css --- //
+// Start-ECOM --- product page main image css --- //
 .variant-Size{
   display:none;
 }
@@ -2970,3 +2970,5 @@ details-disclosure > details {
 .product__media-list li.product__media-item.grid__item.slider__slide .product__media img {
   position: relative;height: 600px;object-fit: contain;
 }
+
+// End-ECOM --- product page main image css --- //

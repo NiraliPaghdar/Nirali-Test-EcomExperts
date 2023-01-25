@@ -673,7 +673,7 @@
 
                 {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
-                {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+<!--                 {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
 
                 <pickup-availability
                   class="product__pickup-availabilities no-js-hidden quick-add-hidden"
@@ -695,7 +695,7 @@
                       </div>
                     </pickup-availability-preview>
                   </template>
-                </pickup-availability>
+                </pickup-availability> -->
               </div>
 
               <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>

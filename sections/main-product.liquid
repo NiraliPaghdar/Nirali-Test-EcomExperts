@@ -645,7 +645,7 @@
                   {%- endform -%}
                 </product-form>
 
-                {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
+            {% comment %}    {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}{% endcomment %}
 
       {% comment %} 
             {%- assign pick_up_availabilities = product.selected_variant.store_availabilities | where: 'pick_up_enabled', true -%}

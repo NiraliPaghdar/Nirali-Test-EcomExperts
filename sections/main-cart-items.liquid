@@ -353,7 +353,7 @@
 
 {% for item in cart.items %}
 {% if item.product.handle == product_incart.handle %}
-  {{ product_incart.handle }}
+  {{ product_incart.handle[variant_ids] }}
 {% assign isProduct = true %}
 {% endif %}
 {% endfor %}

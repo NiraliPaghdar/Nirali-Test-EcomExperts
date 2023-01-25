@@ -1169,7 +1169,13 @@
     }
   </script>
 </section>
+
 <script>
+new Shopify.OptionSelectors('product-select', {
+  product: {{ product | json }},
+  onVariantSelected: selectCallback,
+  enableHistoryState: true
+});
 // <![CDATA[
 var selectCallback = function(variant, selector) {
 console.log("callback")

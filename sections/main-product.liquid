@@ -1170,14 +1170,7 @@
     }
   </script>
 </section>
-<script>
-   var productOptions = [];
-  {% for option in product.options %}
-    var optionObj = {};
-    optionObj[ {{ forloop.index0 }} ] = "{{ product.options[forloop.index0] }}";
-    productOptions.push(optionObj);
-  {% endfor %}
-</script>
+
 {% schema %}
 {
   "name": "t:sections.main-product.name",

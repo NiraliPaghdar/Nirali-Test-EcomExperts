@@ -95,8 +95,8 @@
                 assign media_width = 0.45
               endif
             -%}
-            {%- if product.selected_variant.featured_media != null -%}
-              {%- assign featured_media = product.selected_variant.featured_media -%}
+            {%- if product.selected_or_first_available_variant.featured_media != null -%}
+              {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
               <li
                 id="Slide-{{ section.id }}-{{ featured_media.id }}"
                 class="product__media-item grid__item slider__slide is-active{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains featured_media.src %} product__media-item--variant{% endif %}"
@@ -107,7 +107,7 @@
               </li>
             {%- endif -%}
             {%- for media in product.media -%}
-              {%- unless media.id == product.selected_variant.featured_media.id -%}
+              {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
                 <li
                   id="Slide-{{ section.id }}-{{ media.id }}"
                   class="product__media-item grid__item slider__slide{% if single_media_visible %} product__media-item--single{% endif %}{% if product.selected_or_first_available_variant.featured_media == null and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}"
@@ -232,7 +232,7 @@
                 </li>
               {%- endif -%}
               {%- for media in product.media -%}
-                {%- unless media.id == product.selected_variant.featured_media.id -%}
+                {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
                   {%- liquid
                     capture media_index
                       if media.media_type == 'model'
@@ -525,8 +525,16 @@
                             class="select__select"
                             name="options[{{ option.name | escape }}]"
                             form="{{ product_form_id }}"
-                          >                       
-                            {%- for value in option.values -%}                              
+                          >
+                        <option
+                                value="{{ value | escape }}"
+                                
+                                  selected="selected"
+                              >
+                                Please Select...
+                              </option>
+                            {%- for value in option.values -%}
+                              
                               <option
                                 value="{{ value | escape }}"
                                 {% if option.selected_value == value %}
@@ -563,7 +571,7 @@
                     >
                       {%- for variant in product.variants -%}
                         <option
-                          {% if variant == product.selected_variant %}
+                          {% if variant == product.selected_or_first_available_variant %}
                             selected="selected"
                           {% endif %}
                           {% if variant.available == false %}
@@ -1029,8 +1037,8 @@
         tabindex="0"
       >
         {%- liquid
-          if product.product.selected_variant.featured_media != null
-            assign media = product.product.selected_variant.featured_media
+          if product.selected_or_first_available_variant.featured_media != null
+            assign media = product.selected_or_first_available_variant.featured_media
             render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
           endif
         -%}

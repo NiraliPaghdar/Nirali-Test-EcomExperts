@@ -504,10 +504,23 @@
                       </fieldset>
                     {%- endfor -%}
                 <script>
-                <a href="javascript&colon;void 0" onclick="document.getElementById('productSelect-{{ section.id }}-option-0').value = '{{ variant.title }}';
-document.getElementById('productSelect-{{ section.id }}').value = '{{ variant.id }}';document.getElementById('productSelect-{{ section.id }}-option-0').dispatchEvent(new Event('change'));"><img
-src="{{ variant | image_url: width: 50, height: 50 }}" width="50" height="50"
-data-sku="{{ variant.sku }}" value="{{ variant.id }}" alt="{{ variant.title }} {{ variant.price | money_with_currency }}"></a>
+                <script>
+  
+  var selectCallback = function(variant, selector) {
+    console.log(variant, selector);
+  };
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    var id = document.querySelector("[name='id']").id;
+
+   new Shopify.OptionSelectors(id, {
+      product: {{ product | json }},
+      onVariantSelected: selectCallback,
+      enableHistoryState: true
+    });
+
+});
+</script>
                 </script>
                     <script type="application/json">
                       {{ product.variants | json }}

@@ -72,6 +72,32 @@ class CartItems extends HTMLElement {
       })
       .then((state) => {
         const parsedState = JSON.parse(state);
+        if(parsedState.item_count > 0){
+          var is_product = false;
+          var is_variant = false;
+          jQuery.map(parsedState.items, function(value, index){
+            if(value.variant_id == 44328330690876){ // main product variant id
+              is_product = true;
+            }
+            if(value.variant_id == 44324330111292){ // depended product variant id
+              is_variant = true;
+            }
+          });
+          if(!is_product && is_variant){
+            var cartUpdates = { 44324330111292: 0 } // depended product variant id
+            var params = {
+              type: 'POST',
+              url: '/cart/update.js',
+              data: { updates: cartUpdates },
+              dataType: 'json',
+              success: function(stuff) {
+                window.location.href = '/cart';
+              }
+            };
+            jQuery.ajax(params);
+          }
+        }
+
         this.classList.toggle('is-empty', parsedState.item_count === 0);
         const cartDrawerWrapper = document.querySelector('cart-drawer');
         const cartFooter = document.getElementById('main-cart-footer');

@@ -352,8 +352,8 @@
 {% assign isProduct = false %}
 
 {% for item in cart.items %}
-{% if item.product.handle == variant_ids %}
-  {{ variant_ids }}
+{% if item.product.handle == product_incart.handle %}
+  {{ product_incart.handle }}
 {% assign isProduct = true %}
 {% endif %}
 {% endfor %}

@@ -522,15 +522,25 @@
                           {{ option.name }}
                         </label>
                         <div class="select">
-                          <select>
-{% for variant in product.variants %}
-  {% if variant.available %}
-    <option value="{{variant.id}}">{{variant.title}}</option>
-  {% else %}
-    <option value="{{variant.id}}" disabled>{{variant.title}}</option>
-  {% endif %}
-{% endfor %}
-</select>
+                          <select
+                            id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                            class="select__select"
+                            name="options[{{ option.name | escape }}]"
+                            form="{{ product_form_id }}"
+                          >
+                        
+                            {%- for value in option.values -%}
+                              
+                              <option
+                                value="{{ value | escape }}"
+                                {% if option.selected_value == value %}
+                                  selected="selected"
+                                {% endif %}
+                              >
+                                {{ value }}
+                              </option>
+                            {%- endfor -%}
+                          </select>
                           {% render 'icon-caret' %}
                         </div>
                       </div>

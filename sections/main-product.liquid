@@ -1169,7 +1169,19 @@
     }
   </script>
 </section>
+<script>
+// <![CDATA[
+var selectCallback = function(variant, selector) {
+console.log("callback")
+}
+// initialize multi selector for product
+jQuery(function($) {
+new Shopify.OptionSelectors("product-select", { product: , onVariantSelected: selectCallback });
+});
+// ]]>
+</script>
 
+ 
 {% schema %}
 {
   "name": "t:sections.main-product.name",

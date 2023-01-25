@@ -503,25 +503,7 @@
                         {%- endfor -%}
                       </fieldset>
                     {%- endfor -%}
-                <script>
-                <script>
-  
-  var selectCallback = function(variant, selector) {
-    console.log(variant, selector);
-  };
-
-  document.addEventListener('DOMContentLoaded', (event) => {
-    var id = document.querySelector("[name='id']").id;
-
-   new Shopify.OptionSelectors(id, {
-      product: {{ product | json }},
-      onVariantSelected: selectCallback,
-      enableHistoryState: true
-    });
-
-});
-</script>
-                </script>
+               
                     <script type="application/json">
                       {{ product.variants | json }}
                     </script>

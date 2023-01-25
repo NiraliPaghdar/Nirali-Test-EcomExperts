@@ -609,14 +609,16 @@
                       type="hidden"
                       name="id"
                       value="{{ product.selected_variant.id }}"
-                      
+                      disabled
                     >
                     <div class="product-form__buttons">
                       <button
                         type="submit"
                         name="add"
                         class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
-                        
+                        {% if product.selected_variant.available == false %}
+                          disabled
+                        {% endif %}
                       >
                         <span>
                           {%- if product.selected_variant.available -%}
@@ -645,9 +647,9 @@
                   {%- endform -%}
                 </product-form>
 
-            {% comment %}    {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}{% endcomment %}
+                {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
-      {% comment %} 
+{% comment %} 
             {%- assign pick_up_availabilities = product.selected_variant.store_availabilities | where: 'pick_up_enabled', true -%}
 
                 <pickup-availability
@@ -670,11 +672,10 @@
                       </div>
                     </pickup-availability-preview>
                   </template>
-                </pickup-availability>
-            {% endcomment %}
+                </pickup-availability> {% endcomment %}
               </div>
 
-             {% comment %}  <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+              <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
             {%- when 'rating' -%}
               {%- if product.metafields.reviews.rating.value != blank -%}
                 {% liquid

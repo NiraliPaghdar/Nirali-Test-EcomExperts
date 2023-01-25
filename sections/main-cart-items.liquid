@@ -385,7 +385,6 @@
 </script>
 {% endif %}
 {% else %}
-  {% if isProduct == false %}
 <script>
   (function($) {
   let cartItems = {{ cart.items | json }},
@@ -418,6 +417,5 @@
   $.ajax(params);
   })(jQuery);
 </script>
-    {% endif %}
 {% endif %}
 {% endunless %}

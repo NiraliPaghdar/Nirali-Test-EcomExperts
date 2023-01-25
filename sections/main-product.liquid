@@ -1029,8 +1029,8 @@
         tabindex="0"
       >
         {%- liquid
-          if product.selected_or_first_available_variant.featured_media != null
-            assign media = product.selected_or_first_available_variant.featured_media
+          if product.product.selected_variant.featured_media != null
+            assign media = product.product.selected_variant.featured_media
             render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
           endif
         -%}

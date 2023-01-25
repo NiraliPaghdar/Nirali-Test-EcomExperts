@@ -957,10 +957,10 @@ const selectVariantByClickingImage = {
     const variantImageObject = {};
     product.variants.forEach((variant) => {
       if (
-        typeof variant.featured_image !== 'undefined' &&
-        variant.featured_image !== null
+        typeof variant.featured_media !== 'undefined' &&
+        variant.featured_media !== null
       ) {
-        const variantImage = variant.featured_image.src
+        const variantImage = variant.featured_media.src
           .split('?')[0]
           .replace(/http(s)?:/, '');
         variantImageObject[variantImage] =

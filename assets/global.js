@@ -783,6 +783,9 @@ class VariantSelects extends HTMLElement {
       }).includes(false);
     });
   }
+  
+   /* // Start-ECOM --- Selected variant image display code  --- // */
+  
   filterMedia() {    
       $('[thumbnail-color]').hide();    
       var selected_variant = this.currentVariant.featured_media.alt;   
@@ -791,6 +794,9 @@ class VariantSelects extends HTMLElement {
         $(selected_attribute).show();
       } 
   }
+
+   /* // End-ECOM --- Selected variant image display code  --- // */
+  
   updateMedia() {
     if (!this.currentVariant) return;
     if (!this.currentVariant.featured_media) return;

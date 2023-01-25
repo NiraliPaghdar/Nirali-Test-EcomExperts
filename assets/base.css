@@ -2957,6 +2957,7 @@ details-disclosure > details {
     outline: transparent solid 1px;
   }
 }
+// start-ECOM --- product page main image css --- //
 .variant-Size{
   display:none;
 }

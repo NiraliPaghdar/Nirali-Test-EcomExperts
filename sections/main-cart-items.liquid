@@ -334,7 +334,8 @@
 <!-- only if a product is present in the cart - replace product-1 with the url portion of your product -->
 <!-- Product to be present in the cart - replace product-2 with the url portion of your product -->
 
-{% assign product_incart = all_products['handbag'] %}
+{% assign product_handle = "handbag?variant=44328330690876" %}
+{% assign product_incart = all_products[product_handle] %}
 
 <!-- Product to be added automatically - replace product-2 with the url portion of your product -->
 

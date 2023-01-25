@@ -2958,9 +2958,9 @@ details-disclosure > details {
   }
 }
 /* // Start-ECOM --- product page main image css --- // */
-.variant-Size{
+/* .variant-Size{
   display:none;
-}
+} */
 .product__media-list li.product__media-item.grid__item.slider__slide{
   height:600px;
 }

@@ -632,7 +632,7 @@
                     <input
                       type="hidden"
                       name="id"
-                      value="{{ product.selected_or_first_available_variant.id }}"
+                      value="{{ product.selected_variant.id }}"
                       disabled
                     >
                     <div class="product-form__buttons">
@@ -640,12 +640,12 @@
                         type="submit"
                         name="add"
                         class="product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
-                        {% if product.selected_or_first_available_variant.available == false %}
+                        {% if product.selected_variant.available == false %}
                           disabled
                         {% endif %}
                       >
                         <span>
-                          {%- if product.selected_or_first_available_variant.available -%}
+                          {%- if product.selected_variant.available -%}
                             {{ 'products.product.add_to_cart' | t }}
                           {%- else -%}
                             {{ 'products.product.sold_out' | t }}
@@ -673,7 +673,7 @@
 
                 {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
-<!--                 {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+                {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
 
                 <pickup-availability
                   class="product__pickup-availabilities no-js-hidden quick-add-hidden"
@@ -695,7 +695,7 @@
                       </div>
                     </pickup-availability-preview>
                   </template>
-                </pickup-availability> -->
+                </pickup-availability>
               </div>
 
               <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>

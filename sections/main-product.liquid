@@ -526,12 +526,20 @@
                             name="options[{{ option.name | escape }}]"
                             form="{{ product_form_id }}"
                           >
-                       
+                        <option
+                                value="{{ value | escape }}"
+                                
+                                  selected="selected"
+                              >
+                                Please Select...
+                              </option>
                             {%- for value in option.values -%}
                               
                               <option
                                 value="{{ value | escape }}"
-                                
+                                {% if option.selected_value == value %}
+                                  selected="selected"
+                                {% endif %}
                               >
                                 {{ value }}
                               </option>
@@ -1166,16 +1174,7 @@
     }
   </script>
 </section>
-{% if current_variant == blank %}
-  <script>
-    var productOptions = [];
-    {% for option in product.options -%}
-      var optionObj = {};
-      optionObj[ {{ forloop.index0 }} ] = "{{ product.options[forloop.index0] }}";
-      productOptions.push(optionObj);
-    {%- endfor %}
-  </script>
-{% endif %}
+
 {% schema %}
 {
   "name": "t:sections.main-product.name",

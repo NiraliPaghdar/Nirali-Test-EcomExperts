@@ -506,7 +506,7 @@
                       {{ product.variants | json }}
                     </script>
                   </variant-radios> 
-                
+                /* // Start-ECOM --- Size option dropdown code --- // */
                 <variant-selects
                     class="no-js-hidden"
                     data-section="{{ section.id }}"
@@ -541,6 +541,7 @@
                       {% endif %}
                     {%- endfor -%}
                   </variant-selects>
+                /* // End-ECOM --- Size option dropdown code --- // */
                {% comment %}
                   <variant-selects
                     class="no-js-hidden"

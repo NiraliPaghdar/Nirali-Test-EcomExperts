@@ -540,9 +540,6 @@
                       </div>
                       {% endif %}
                     {%- endfor -%}
-                 <script type="application/json">
-                      {{ product.variants | json }}
-                    </script>
                   </variant-selects>
                {% comment %}
                   <variant-selects
@@ -584,7 +581,9 @@
                         {% endif %}
                     {%- endfor -%}
 
-                   
+                    <script type="application/json">
+                      {{ product.variants | json }}
+                    </script>
                   </variant-selects>
                 {% endcomment %}
               {%- endunless -%}

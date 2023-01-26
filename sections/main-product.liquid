@@ -482,7 +482,7 @@
                     {{ block.shopify_attributes }}
                   >
                     {%- for option in product.options_with_values -%} 
-                      <fieldset class="js product-form__input variant-{{ option.name }}">
+                      <fieldset class="js product-form__input variant-{{ option.name }} {% if option.name == 'Size' %} hidden {% endif %}"">
                         <legend class="form__label">{{ option.name }}</legend>
                         {%- for value in option.values -%}
                           <input
@@ -502,11 +502,45 @@
                         {%- endfor -%}
                       </fieldset> 
                     {%- endfor -%}
-                    <script type="application/json">
+                    <script type="application/json" id="pp_json_data">
                       {{ product.variants | json }}
                     </script>
                   </variant-radios>                    
-                
+                <variant-selects
+                    class="no-js-hidden"
+                    data-section="{{ section.id }}"
+                    data-url="{{ product.url }}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- for option in product.options_with_values -%}
+                      {% if option.name == 'Size' %}
+                      <div class="product-form__input product-form__input--dropdown">
+                        <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                          {{ option.name }}
+                        </label>
+                        <div class="select">
+                          <select
+                            id="option_size"
+                            class="select__select"
+                            >
+                            {%- for value in option.values -%}
+                              <option
+                                value="{{ value | escape }}"
+                                {% if option.selected_value == value %}
+                                  selected="selected"
+                                {% endif %}
+                              >
+                                {{ value }}
+                              </option>
+                            {%- endfor -%}
+                          </select>
+                          {% render 'icon-caret' %}
+                        </div>
+                      </div>
+                      {% endif %}
+                    {%- endfor -%}
+                  </variant-selects>
+               
                   <variant-selects
                     class="no-js-hidden"
                     data-section="{{ section.id }}"

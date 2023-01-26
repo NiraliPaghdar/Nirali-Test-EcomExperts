@@ -290,6 +290,34 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#option_size").on("change",function(){
+        var set_val = $(this).val();
+        var set_color = $('input:radio[name="Color"]:checked').val();
+        $('input:radio[name="Size"]:checked').removeAttr("checked");
+        $('input:radio[name="Size"][value="'+set_val+'"]').prop("checked", true);
+        var pp_json = $.parseJSON($('#pp_json_data').text());
+        var selected_val = null;
+         pp_json.forEach(function myFunction(item, index, arr) {
+           if(item.option1 == set_color && item.option2 == set_val){
+             selected_val = item;
+             return false;
+           }
+         });  
+        if(!selected_val.available){
+          $('button[name="add"]').attr("disabled","disabled");
+          $('button[name="add"]>span').text("Sold out");
+        }
+        else{
+          $('button[name="add"]').removeAttr("disabled");
+          $('button[name="add"]>span').text("Add to cart");
+        }
+        $('input[name="id"]').val(selected_val.id);
+      });
+    });
+    </script>
+
   </body>
 </html>

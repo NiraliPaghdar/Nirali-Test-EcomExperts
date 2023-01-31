@@ -650,8 +650,9 @@
     <option selected="selected" disabled>Pick A Size</option>
     {% for variant in product.variants %}
     <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+      {% break %}
 {% endfor %}
-                    {% break %}
+                    
                     </select></div>
 <!--                     {% for variant in product.variants %}
                     {%- for option in product.options_with_values -%}

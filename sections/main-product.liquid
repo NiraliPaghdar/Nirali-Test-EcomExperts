@@ -529,11 +529,7 @@
                         <option selected="selected" disabled>Pick A Size</option>
                             {%- for value in option.values -%}
                               <option
-                                value="{{ value | escape }}"
-<!--                                 {% if option.selected_value == value %}
-                                  selected="selected"
-                                {% endif %} -->
-                              >
+                                value="{{ value | escape }}">
                                 {{ value }}
                               </option>
                             {%- endfor -%}

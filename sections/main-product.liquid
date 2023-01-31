@@ -649,25 +649,8 @@
 <select class="product-variants" name="id" id="product-variants-{{ product.id }}">
     <option selected="selected" disabled>Pick A Size</option>
     {% for variant in product.variants %}
-      {%- for option in product.options_with_values -%}
-        {% if option.name == 'Size' %}
-    {%- for value in option.values -%}
-
-        <option value="{{ value | escape }}">{{ value }}</option>
-                            {%- endfor -%}
-          {% endif %}
-        {% endfor %}
-      
+    <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
 {% endfor %}
-                    </div>
-                    <div class="product-options">
-<select class="product-variants" name="id" id="product-variants-{{ product.id }}">
-    <option selected="selected" disabled>Pick A Size</option>
-    {% for variant in product.variants %}
-    <option value="{{ variant.id }}">{{ variant.title }}</option>
-{% endfor %}
-</select>
-                    </div>
                     <input
                       type="hidden"
                       name="id"

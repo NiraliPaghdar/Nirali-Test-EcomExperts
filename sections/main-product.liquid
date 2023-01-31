@@ -651,6 +651,31 @@
     {% for variant in product.variants %}
     <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
 {% endfor %}
+                    {%- for option in product.options_with_values -%}
+                      {% if option.name == 'Size' %}
+                      <div class="product-form__input product-form__input--dropdown">
+                        <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                          {{ option.name }}
+                        </label>
+                        <div class="select">
+                          <select
+                            name="id" id="product-variants-{{ product.id }}"
+                            class="select__select"
+                            >
+                            <option selected="selected" disabled>Pick A Size</option>
+                            {%- for value in option.values -%}
+                              <option
+                                value="{{ value.id | escape }}"                                
+                              >
+                                {{ value }}
+                              </option>
+                            {%- endfor -%}
+                          </select>
+                          {% render 'icon-caret' %}
+                        </div>
+                      </div>
+                      {% endif %}
+                    {%- endfor -%}
                     <input
                       type="hidden"
                       name="id"

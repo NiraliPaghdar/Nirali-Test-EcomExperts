@@ -642,41 +642,7 @@
                   </div>
 
                   {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}                                     
-<!--                    <div class="product-options">
-<select class="product-variants" name="id" id="product-variants-{{ product.id }}">
-    <option selected="selected" disabled>Pick A Size</option>
-    {% for variant in product.variants %}
-    <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>     
-{% endfor %}
-                    
-                    </select></div>
-                    {%- for option in product.options_with_values -%}
-                      {% if option.name == 'Size' %}
-                      <div class="product-form__input product-form__input--dropdown">
-                        <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
-                          {{ option.name }}
-                        </label>
-                        <div class="select">
-                          <select
-                            name="id" id="product-variants-{{ product.id }}"
-                            class="select__select"
-                            >
-                            <option selected="selected" disabled>Pick A Size</option>
-                            {%- for value in option.values -%}
-                              {% for variant in product.variants %}
-                              <option
-                                value="{{ variant.id }}"                                
-                              >
-                                {{ value }}
-                              </option>
-                                {% endfor %}
-                            {%- endfor -%}
-                          </select>
-                          {% render 'icon-caret' %}
-                        </div>
-                      </div>
-                      {% endif %}
-                    {%- endfor -%} -->
+
                     <input
                       type="hidden"
                       name="id"

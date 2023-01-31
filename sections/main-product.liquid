@@ -651,6 +651,7 @@
     {% for variant in product.variants %}
     <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
 {% endfor %}
+                    </select></div>
                     {%- for option in product.options_with_values -%}
                       {% if option.name == 'Size' %}
                       <div class="product-form__input product-form__input--dropdown">

@@ -293,7 +293,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
     $(document).ready(function(){
-      $(".option_size").on("change",function(){
+      $("#option_size").on("change",function(){
         var set_val = $(this).val();
         var set_color = $('input:radio[name="Color"]:checked').val();
         $('input:radio[name="Size"]:checked').removeAttr("checked");

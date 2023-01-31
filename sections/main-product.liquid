@@ -543,6 +543,21 @@
                       {% endif %}
                     {%- endfor -%}
                   </variant-selects>
+                <select id="ProductSelect-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+           {%- if  product_option.name == "size"   -%}
+                {%- for value in option.values -%}
+                    {%- if product.variants[forloop.index0].available -%}
+                        <option value="{{ value | escape }}  - ships faster "{% if option.selected_value == value %} selected="selected"{% endif %}>
+                     {{ value | escape }} 
+                        </option>  
+                     {%- else -%}
+                        <option value="{{ value | escape }} - ships longer "{% if option.selected_value == value %} selected="selected"{% endif %}>
+                    {{ value | escape }} 
+                        </option>
+                    {%- endif -%}
+            {%- endfor -%}
+        {%- endif -%}
+      </select>
                 
 <!--                 End-ECOM --- Size Option Dropdown Code  -->
                 

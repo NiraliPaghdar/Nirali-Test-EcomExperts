@@ -650,8 +650,12 @@
     <option selected="selected" disabled>Pick A Size</option>
     {% for variant in product.variants %}
       {%- for option in product.options_with_values -%}
-    <option value="{{ option.id }}">{{ option.title }}</option>
+    {%- for value in option.values -%}
+
+        <option value="{{ value | escape }}">{{ value }}</option>
+                            {%- endfor -%}
         {% endfor %}
+      
 {% endfor %}
                     </div>
                     <input

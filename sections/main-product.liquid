@@ -526,6 +526,7 @@
                             id="option_size"
                             class="select__select"
                             >
+                        <option selected="selected" disabled>Pick A Size</option>
                             {%- for value in option.values -%}
                               <option
                                 value="{{ value | escape }}"
@@ -645,7 +646,7 @@
                   </div>
 
                   {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}                                     
-                   <div class="product-options">
+<!--                    <div class="product-options">
 <select class="product-variants" name="id" id="product-variants-{{ product.id }}">
     <option selected="selected" disabled>Pick A Size</option>
     {% for variant in product.variants %}
@@ -679,7 +680,7 @@
                         </div>
                       </div>
                       {% endif %}
-                    {%- endfor -%}
+                    {%- endfor -%} -->
                     <input
                       type="hidden"
                       name="id"

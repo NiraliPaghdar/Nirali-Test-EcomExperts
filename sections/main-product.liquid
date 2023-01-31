@@ -645,13 +645,13 @@
                   </div>
 
                   {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}                                     
-                   <div class="product-options">
+<!--                    <div class="product-options">
 <select class="product-variants" name="id" id="product-variants-{{ product.id }}">
     <option selected="selected" disabled>Pick A Size</option>
     {% for variant in product.variants %}
     <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
 {% endfor %}
-                    </select></div>
+                    </select></div> -->
                     {%- for option in product.options_with_values -%}
                       {% if option.name == 'Size' %}
                       <div class="product-form__input product-form__input--dropdown">
@@ -666,7 +666,7 @@
                             <option selected="selected" disabled>Pick A Size</option>
                             {%- for value in option.values -%}
                               <option
-                                value="{{ value.id | escape }}"                                
+                                value="{{ variant.id }}"                                
                               >
                                 {{ value }}
                               </option>

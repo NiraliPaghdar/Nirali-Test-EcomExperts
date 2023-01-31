@@ -650,10 +650,12 @@
     <option selected="selected" disabled>Pick A Size</option>
     {% for variant in product.variants %}
       {%- for option in product.options_with_values -%}
+        {% if option.name == 'Size' %}
     {%- for value in option.values -%}
 
         <option value="{{ value | escape }}">{{ value }}</option>
                             {%- endfor -%}
+          {% endif %}
         {% endfor %}
       
 {% endfor %}

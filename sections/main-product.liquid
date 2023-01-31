@@ -649,8 +649,7 @@
 <select class="product-variants" name="id" id="product-variants-{{ product.id }}">
     <option selected="selected" disabled>Pick A Size</option>
     {% for variant in product.variants %}
-    <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
-      {% break %}
+    <option value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>     
 {% endfor %}
                     
                     </select></div>

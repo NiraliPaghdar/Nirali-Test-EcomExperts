@@ -653,7 +653,6 @@
 {% endfor %}
                     
                     </select></div>
-<!--                     {% for variant in product.variants %}
                     {%- for option in product.options_with_values -%}
                       {% if option.name == 'Size' %}
                       <div class="product-form__input product-form__input--dropdown">
@@ -667,11 +666,13 @@
                             >
                             <option selected="selected" disabled>Pick A Size</option>
                             {%- for value in option.values -%}
+                              {% for variant in product.variants %}
                               <option
                                 value="{{ variant.id }}"                                
                               >
                                 {{ value }}
                               </option>
+                                {% endfor %}
                             {%- endfor -%}
                           </select>
                           {% render 'icon-caret' %}
@@ -679,8 +680,6 @@
                       </div>
                       {% endif %}
                     {%- endfor -%}
-                      {% break %}
-                      {% endfor %} -->
                     <input
                       type="hidden"
                       name="id"

@@ -323,13 +323,12 @@
         $(".product-form__submit").click(function () {
             var books = $('#option_size');
             if (books.val() === '') {
-              $(".size_select_error_msg").show();
-                //alert("Please select size then proceed!");
+              //$(".size_select_error_msg").show();
+                alert("Please select size then proceed!");
                 $('#option_size').focus();
 
                 return false;
             }
-            $(".size_select_error_msg").hide();
             else return;
         });
     });

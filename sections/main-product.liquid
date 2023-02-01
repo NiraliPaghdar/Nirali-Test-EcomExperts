@@ -522,8 +522,7 @@
                         <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
                           {{ option.name }}
                         </label>
-                        <div class="select">
-                        <span class="size_select_error_msg" style="color:red;">Please Select Size *</span>
+                        <div class="select">                        
                           <select
                             id="option_size"
                             class="select__select"
@@ -538,6 +537,7 @@
                           </select>
                           {% render 'icon-caret' %}
                         </div>
+                        <span class="size_select_error_msg" style="color:red;font-size: 12px;display: none;">Please Select Size *</span>
                       </div>
                       {% endif %}
                     {%- endfor -%}

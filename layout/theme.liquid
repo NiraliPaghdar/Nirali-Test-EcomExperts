@@ -292,8 +292,7 @@
     {%- endif -%}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
-    $(document).ready(function(){
-      $('#option_size option:nth-child(2):selected').removeAttr("selected");
+    $(document).ready(function(){      
       $("#option_size").on("change",function(){
         var set_val = $(this).val();
         var set_color = $('input:radio[name="Color"]:checked').val();

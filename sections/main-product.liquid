@@ -515,7 +515,7 @@
                     data-url="{{ product.url }}"
                     {{ block.shopify_attributes }}
                   >
-                {% assign current_variant = product.selected_variant %}
+                
                     {%- for option in product.options_with_values -%}
                       {% if option.name == 'Size' %}
                       <div class="product-form__input product-form__input--dropdown">
@@ -1209,18 +1209,6 @@
     }
   </script>
 </section>
-
-{% if current_variant == blank %}
-  <script>
-    var productOptions = [];
-
-    {% for option in product.options -%}
-      var optionObj = {};
-      optionObj[ {{ forloop.index0 }} ] = "{{ product.options[forloop.index0] }}";
-      productOptions.push(optionObj);
-    {%- endfor %}
-  </script>
-{% endif %}
 
 
  
